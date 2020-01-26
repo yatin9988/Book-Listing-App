@@ -5,13 +5,17 @@ public class Book {
     private String title;
     private String pageCount;
     private String publishedDate;
-    private String[] authors;
+    private String authors;
+    private String imageLink;
+    private String canonicalVolumeLink;
 
-    public Book(String title,String pageCount,String publishedDate,String []authors){
+    public Book(String title,String pageCount,String publishedDate,String authors,String imageLink,String canonicalVolumeLink){
         this.title = title;
         this.pageCount = pageCount;
         this.publishedDate = publishedDate;
         this.authors = authors;
+        this.imageLink = imageLink;
+        this.canonicalVolumeLink = canonicalVolumeLink;
     }
 
     public String getTitle(){
@@ -26,8 +30,16 @@ public class Book {
         return this.publishedDate;
     }
 
-    public String[] getAuthors(){
+    public String getAuthors(){
         return this.authors;
+    }
+
+    public String getImageLink(){
+        return this.imageLink;
+    }
+
+    public String getCanonicalVolumeLink(){
+        return this.canonicalVolumeLink;
     }
 
 }
