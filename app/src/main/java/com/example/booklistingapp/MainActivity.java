@@ -1,7 +1,12 @@
 package com.example.booklistingapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -27,5 +32,12 @@ public class MainActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.list);
         textView = (TextView) findViewById(R.id.no_internet);
         button = (Button) findViewById(R.id.search);
+
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = cm.getActiveNetworkInfo();
+        boolean isConnected = networkInfo!=null && networkInfo.isConnected();
+
+
+
     }
 }
