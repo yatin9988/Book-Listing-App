@@ -3,6 +3,10 @@ package com.example.booklistingapp;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class QueryUtils {
@@ -39,7 +43,33 @@ public class QueryUtils {
         }
 
         return books;
-        
+
     }
+
+    public static void makeHttpRequest(URL url){
+
+        HttpURLConnection urlConnection = null;
+        InputStream inputStream = null;
+        try{
+
+            urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setRequestMethod("GET");
+            urlConnection.setReadTimeout(10000);
+            urlConnection.setConnectTimeout(10000);
+            urlConnection.connect();
+
+            if(urlConnection.getResponseCode()==200){
+                inputStream = urlConnection.getInputStream();
+                JSON_RESPONSE = readFromInputStream(inputStream);
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+    
+
+
 
 }
