@@ -40,19 +40,8 @@ public class BookAdapter extends ArrayAdapter<Book> {
         title.setText(book.getTitle());
         published.setText(book.getPublishedDate());
         pages.setText(book.getPageCount());
+        author.setText(book.getAuthors());
 
-        StringBuilder sb = new StringBuilder();
-        String []authors = book.getAuthors();
-        if(authors.length == 1)
-            author.setText(authors[0]);
-        else {
-            for (int i = 0; i < authors.length - 1; i++) {
-                sb.append(authors[i] + " ,");
-            }
-            sb.append(authors[authors.length-1]);
-            author.setText(sb.toString());
-
-        }
         return view;
     }
 }
